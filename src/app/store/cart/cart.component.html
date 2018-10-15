@@ -1,0 +1,13 @@
+<div class="float-right text-white">
+  <small class="cart__text">
+    Your cart:
+    <span *ngIf="cart.itemCount > 0">
+      {{ cart.itemCount }} item(s)
+      {{ cart.cartPrice | currency:"USD" }}
+    </span>
+    <span *ngIf="cart.itemCount == 0">(empty)</span>
+  </small>
+  <button  mat-icon-button [disabled]="cart.itemCount === 0" routerLink="cart" (click)="changeHeader('Your cart')">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+</div>

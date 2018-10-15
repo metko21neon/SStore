@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <app-navbar [snav]="snav" class="app-navbar"></app-navbar>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-page-header></app-page-header>
+<mat-sidenav-container class="sidenav__container">
+  <mat-sidenav #snav mode="push" class="sidenav">
+    <app-sidebar [snav]="snav"></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav__content p-3">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

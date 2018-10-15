@@ -1,0 +1,14 @@
+<nav class="nav">
+  <ul class="nav__list list">
+    <li class="nav__item item">
+      <a routerLink="store" routerLinkActive="active" class="nav__link link" (click)="changeHeader('All categories')" (click)="snav.close()">
+        All categories
+      </a>
+    </li>
+    <li class="nav__item item">
+      <a routerLink="admin" routerLinkActive="active" class="nav__link link" (click)="changeHeader('Admin')" (click)="snav.close()">
+        Admin
+      </a>
+    </li>
+  </ul>
+</nav>
