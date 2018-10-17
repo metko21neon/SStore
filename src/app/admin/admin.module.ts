@@ -8,12 +8,14 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsComponent } from './products/products.component';
 import { EditComponent } from './edit/edit.component';
 import { OrdersComponent } from './orders/orders.component';
+import {MaterialModule} from '../material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MaterialModule
   ],
   declarations: [
     AuthComponent,

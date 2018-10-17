@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../product.model';
 import { RestDatasourceService } from './rest-datasourse.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,13 @@ export class ProductRepositoryService {
   constructor(private dataSource: RestDatasourceService) {
     dataSource.getProducts().subscribe(data => {
       this.products = data;
-      this.categories = data.map(p => p.category)
-        .filter((c, index, array) => array.indexOf(c) === index).sort();
     });
   }
-  getProducts(category: string = null): Product[] {
-    return this.products
-      .filter(p => category == null || category === p.category);
+  getProducts(): Product[] {
+    return this.products;
   }
-  getProduct(id: number): Product {
-    return this.products.find(p => p.id === +id);
+  getProduct(id: number | string) {
+    return this.dataSource.getProducts().pipe(map((products: Product[]) => products.find(product => product.id === +id)));
   }
   getCategories(): string[] {
     return this.categories;

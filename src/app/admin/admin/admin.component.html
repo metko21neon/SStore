@@ -1,29 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="navbar navbar-info bg-info">
-        <a class="navbar-brand">SPORTS STORE Admin</a>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-3">
-      <button class="btn btn-outline-info btn-block"
-              routerLink="/admin/main/products"
-              routerLinkActive="active">
-        Products
-      </button>
-      <button class="btn btn-outline-info btn-block"
-              routerLink="/admin/main/orders"
-              routerLinkActive="active">
-        Orders
-      </button>
-      <button class="btn btn-outline-danger btn-block" (click)="logout()">
-        Logout
-      </button>
-    </div>
-    <div class="col-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<mat-horizontal-stepper #stepper class="w-75 mx-auto my-2">
+  <mat-step>
+    <ng-template matStepLabel>Products</ng-template>
+    <router-outlet></router-outlet>
+    <button mat-flat-button matStepperNext color="primary">Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Orders</ng-template>
+    <app-orders></app-orders>
+    <button mat-flat-button matStepperPrevious color="primary" class="mr-2">Back</button>
+    <button mat-flat-button matStepperNext color="primary">Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Logout</ng-template>
+    <button mat-flat-button matStepperPrevious color="primary" class="mr-2">Back</button>
+    <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+  </mat-step>
+</mat-horizontal-stepper>

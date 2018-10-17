@@ -14,11 +14,11 @@ export class EditComponent implements OnInit {
   product: Product = new Product();
   constructor(private repository: ProductRepositoryService,
               private router: Router,
-              activeRoute: ActivatedRoute) {
-    this.editing = activeRoute.snapshot.params['mode'] === 'edit';
+              private activatedRoute: ActivatedRoute) {
+    this.editing = activatedRoute.snapshot.params['mode'] === 'edit';
     if (this.editing) {
       Object.assign(this.product,
-        repository.getProduct(activeRoute.snapshot.params['id']));
+        repository.getProduct(activatedRoute.snapshot.params['id']));
     }
   }
   ngOnInit() {

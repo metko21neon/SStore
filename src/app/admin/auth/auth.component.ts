@@ -9,6 +9,7 @@ import { AuthService } from '../../model/core/auth.service';
   styleUrls: ['./auth.component.sass']
 })
 export class AuthComponent implements OnInit {
+  public hide = true;
   public username: string;
   public password: string;
   public errorMessage: string;
