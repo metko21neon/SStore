@@ -14,6 +14,8 @@ import { NavigationComponent } from './schematics/navigation/navigation.componen
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { DashboardComponent } from './schematics/dashboard/dashboard.component';
+import {AuthComponent} from './admin/auth/auth.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { DashboardComponent } from './schematics/dashboard/dashboard.component';
     ProductDetailsComponent,
     NavigationComponent,
     DashboardComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { DashboardComponent } from './schematics/dashboard/dashboard.component';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

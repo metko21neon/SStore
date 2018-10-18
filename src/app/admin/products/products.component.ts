@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { ProductRepositoryService } from '../../model/core/product-repository.service';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {RestDatasourceService} from '../../model/core/rest-datasourse.service';
+import {CommonService} from '../../model/core/common.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,8 @@ export class ProductsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private repository: ProductRepositoryService,
-              private data: RestDatasourceService) { }
+              private data: RestDatasourceService,
+              private common: CommonService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -36,5 +38,8 @@ export class ProductsComponent implements OnInit {
   deleteProduct(id: number) {
     this.repository.deleteProduct(id);
     this.getProducts();
+  }
+  changeHeader(header) {
+    this.common.changeHeader(header);
   }
 }

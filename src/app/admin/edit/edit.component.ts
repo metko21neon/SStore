@@ -17,15 +17,17 @@ export class EditComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.editing = activatedRoute.snapshot.params['mode'] === 'edit';
     if (this.editing) {
-      Object.assign(this.product,
-        repository.getProduct(activatedRoute.snapshot.params['id']));
+      Object.assign(this.product, repository.getProductById(activatedRoute.snapshot.params['id']));
     }
   }
   ngOnInit() {
   }
+  get categories(): string[] {
+    return this.repository.getCategories();
+  }
   save(form: NgForm) {
     this.repository.saveProduct(this.product);
-    this.router.navigateByUrl('/admin/main/products');
+    this.router.navigateByUrl('/admin/products');
   }
 
 }

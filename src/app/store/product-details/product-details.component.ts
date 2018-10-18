@@ -13,17 +13,18 @@ import {RestDatasourceService} from '../../model/core/rest-datasourse.service';
   styleUrls: ['./product-details.component.sass']
 })
 export class ProductDetailsComponent implements OnInit {
-  public product$: Observable<Product>;
+  public product$: Product;
   constructor( private route: ActivatedRoute,
                private product: ProductRepositoryService,
                private dataSource: RestDatasourceService) {
   }
 
   ngOnInit() {
-    this.product$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.product.getProduct(params.get('id')))
-    );
+    this.get();
+  }
+  get() {
+      // this.product$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.product.getProduct(params.get('id'))));
+      this.route.data.subscribe(( data: {product: Product}) => this.product$ = data.product );
   }
 
 }

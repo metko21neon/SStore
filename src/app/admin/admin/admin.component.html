@@ -2,7 +2,7 @@
   <mat-step>
     <ng-template matStepLabel>Products</ng-template>
     <router-outlet></router-outlet>
-    <button mat-flat-button matStepperNext color="primary">Next</button>
+    <button mat-flat-button matStepperNext color="primary" class="mt-3">Next</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Orders</ng-template>
@@ -12,7 +12,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Logout</ng-template>
-    <button mat-flat-button matStepperPrevious color="primary" class="mr-2">Back</button>
-    <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+    <button mat-flat-button matStepperPrevious color="primary" class="mr-2 mt-3">Back</button>
+    <button mat-flat-button color="primary" class="mt-3" (click)="logout()">Logout</button>
   </mat-step>
 </mat-horizontal-stepper>

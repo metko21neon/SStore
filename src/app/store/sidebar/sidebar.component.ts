@@ -11,7 +11,7 @@ import {CommonService} from '../../model/core/common.service';
 export class SidebarComponent implements OnInit {
   @Input() snav: AppComponent;
   public header: string;
-  constructor( private common: CommonService) { }
+  constructor(private common: CommonService) { }
 
   ngOnInit() {}
   changeHeader(header) {

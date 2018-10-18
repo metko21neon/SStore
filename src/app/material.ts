@@ -12,6 +12,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatPaginatorModule,
     MatMenuModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +46,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatPaginatorModule,
     MatMenuModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatRadioModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

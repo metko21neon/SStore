@@ -6,7 +6,7 @@ import { RestDatasourceService } from './rest-datasourse.service';
   providedIn: 'root'
 })
 export class AuthService {
-
+  public redirectUrl: string;
   constructor(private datasource: RestDatasourceService) {}
 
   authenticate(username: string, password: string): Observable<boolean> {

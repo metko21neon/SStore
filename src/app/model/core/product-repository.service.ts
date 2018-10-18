@@ -13,6 +13,8 @@ export class ProductRepositoryService {
   constructor(private dataSource: RestDatasourceService) {
     dataSource.getProducts().subscribe(data => {
       this.products = data;
+      this.categories = data.map( product => product.category)
+        .filter((c, index, array) => array.indexOf(c) === index).sort();
     });
   }
   getProducts(): Product[] {
@@ -20,6 +22,9 @@ export class ProductRepositoryService {
   }
   getProduct(id: number | string) {
     return this.dataSource.getProducts().pipe(map((products: Product[]) => products.find(product => product.id === +id)));
+  }
+  getProductById(id: number | string) {
+    return this.products.find(product => product.id === +id);
   }
   getCategories(): string[] {
     return this.categories;
