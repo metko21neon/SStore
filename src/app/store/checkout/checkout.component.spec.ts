@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckoutComponent } from './checkout.component';
+import {StoreModule} from '../store.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;
@@ -8,7 +10,10 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckoutComponent ]
+      imports: [
+        StoreModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
   }));

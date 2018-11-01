@@ -1,14 +1,14 @@
 <mat-horizontal-stepper #stepper class="w-75 mx-auto my-2">
   <mat-step>
     <ng-template matStepLabel>Products</ng-template>
-    <router-outlet></router-outlet>
-    <button mat-flat-button matStepperNext color="primary" class="mt-3">Next</button>
+    <router-outlet name="primary"></router-outlet>
+    <button mat-flat-button matStepperNext color="primary" class="mt-3" routerlink="/orders">Next</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Orders</ng-template>
-    <app-orders></app-orders>
-    <button mat-flat-button matStepperPrevious color="primary" class="mr-2">Back</button>
-    <button mat-flat-button matStepperNext color="primary">Next</button>
+    <router-outlet name="order"></router-outlet>
+    <button mat-flat-button matStepperPrevious color="primary" class="mr-2 mt-3">Back</button>
+    <button mat-flat-button matStepperNext color="primary" class="mt-3">Next</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Logout</ng-template>

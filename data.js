@@ -38,6 +38,6 @@ module.exports = function () {
       { id: 35, name: "Bling Bling Ki", category: "Chess", description: "Gold-plated, diamond-studded King", price: 1200 },
       { id: 36, name: "Bling Bling K", category: "Chess", description: "Gold-plated, diamond-studded King", price: 1200 }
     ],
-    orders: [],
+    orders: []
   }
 };

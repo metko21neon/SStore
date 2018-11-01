@@ -32,7 +32,7 @@ export class OrderRepositoryService {
   }
   deleteOrder(id: number) {
     this.dataSource.deleteOrder(id).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => id === o.id));
+      this.orders.splice(this.orders.findIndex(o => id === o.id), 1);
     });
   }
 }

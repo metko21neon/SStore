@@ -6,7 +6,6 @@ import { Order } from '../order.model';
   providedIn: 'root'
 })
 export class OrderService {
-  /*private orders: Order;*/
   public id: number;
   public name: string;
   public surname: string;
@@ -14,8 +13,7 @@ export class OrderService {
   public phone: string;
   public address: string;
   public city: string;
-  public state: string;
-  public zip: string;
+  public postalCode: string;
   public country: string;
   public shipped: boolean = false;
   constructor(public cart: CartService) { }
@@ -23,7 +21,8 @@ export class OrderService {
   clear() {
     this.id = null;
     this.name = this.address = this.city = null;
-    this.state = this.zip = this.country = null;
+    this.surname = this.email = this.phone = null;
+    this.postalCode = this.country = null;
     this.shipped = false;
     this.cart.clear();
   }

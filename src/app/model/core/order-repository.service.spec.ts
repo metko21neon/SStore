@@ -1,18 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ProductDetailResolverService } from './product-detail-resolver.service';
+import { OrderRepositoryService } from './order-repository.service';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 
-describe('ProductDetailResolverService', () => {
+describe('OrderRepositoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientModule,
       RouterTestingModule
-    ]}));
+    ]
+  }));
 
   it('should be created', () => {
-    const service: ProductDetailResolverService = TestBed.get(ProductDetailResolverService);
+    const service: OrderRepositoryService = TestBed.get(OrderRepositoryService);
     expect(service).toBeTruthy();
   });
 });

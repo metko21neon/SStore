@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from './store/store.module';
 import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './store/sidebar/sidebar.component';
@@ -16,6 +17,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DashboardComponent } from './schematics/dashboard/dashboard.component';
 import {AuthComponent} from './admin/auth/auth.component';
 import {FormsModule} from '@angular/forms';
+import {TokenInterceptor} from './model/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,9 +48,16 @@ import {FormsModule} from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

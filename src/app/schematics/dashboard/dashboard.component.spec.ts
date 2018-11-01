@@ -1,3 +1,4 @@
+/*
 
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -22,3 +23,4 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ModelModule } from '../model/model.module';
 import { RouterModule } from '@angular/router';
 import {MaterialModule} from '../material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreComponent } from './store/store.component';
 import { CartComponent } from './cart/cart.component';
@@ -18,7 +19,8 @@ import { CounterDirective } from './counter.directive';
     FormsModule,
     ModelModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   declarations: [
     StoreComponent,

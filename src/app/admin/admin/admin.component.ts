@@ -12,11 +12,10 @@ export class AdminComponent implements OnInit {
   constructor(private auth: AuthService,
               private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   logout() {
     this.auth.clear();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/store');
   }
 
 }

@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AppComponent} from '../../app.component';
-import {ProductRepositoryService} from '../../model/core/product-repository.service';
 import {CommonService} from '../../model/core/common.service';
+
+import {AuthService} from '../../model/core/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,10 +12,14 @@ import {CommonService} from '../../model/core/common.service';
 export class SidebarComponent implements OnInit {
   @Input() snav: AppComponent;
   public header: string;
-  constructor(private common: CommonService) { }
+  constructor(private common: CommonService,
+              private auth: AuthService) { }
 
   ngOnInit() {}
-  changeHeader(header) {
+  public changeHeader(header) {
     this.common.changeHeader(header);
+  }
+  public logout() {
+    this.auth.clear();
   }
 }

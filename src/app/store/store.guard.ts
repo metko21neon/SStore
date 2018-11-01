@@ -3,6 +3,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Observable } from 'rxjs';
 
 import { StoreComponent } from './store/store.component';
+import {AdminComponent} from '../admin/admin/admin.component';
 
 @Injectable({
   providedIn: 'root'

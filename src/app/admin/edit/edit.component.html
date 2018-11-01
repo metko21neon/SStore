@@ -1,23 +1,23 @@
-<form novalidate #form="ngForm" (ngSubmit)="save(form)" class="w-75 m-auto text-center">
+<form novalidate [formGroup]="editForm" (ngSubmit)="save(editForm)" class="w-75 m-auto text-center">
   <mat-form-field class="w-100">
-    <input matInput #name="ngModel" name="username" [(ngModel)]="product.name" placeholder="Enter your name" required>
+    <input matInput #name formControlName="name" placeholder="Enter your name" required>
     <mat-hint align="end">{{name.value?.length || 0}}/10</mat-hint>
   </mat-form-field>
   <mat-form-field class="w-100">
-    <mat-select placeholder="Category" #select="ngModel" name="category" [(ngModel)]="product.category">
+    <mat-select #category formControlName="category" placeholder="Category">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="w-100">
-    <textarea matInput #textarea="ngModel" name="description" placeholder="Description" [(ngModel)]="product.description" required></textarea>
+    <textarea matInput  #description formControlName="description"  placeholder="Description" required></textarea>
   </mat-form-field>
   <mat-form-field class="w-100">
-    <input matInput #amount="ngModel" name="price" placeholder="Amount" type="number" [(ngModel)]="product.price" required>
+    <input matInput  #price formControlName="price"  placeholder="Amount" type="number" required>
     <span matPrefix>$&nbsp;</span>
     <span matSuffix>.00</span>
   </mat-form-field>
 
-  <button type="submit" mat-stroked-button color="primary" class="mr-2">{{editing ? "Save" : "Create"}}</button>
+  <button type="submit" mat-stroked-button color="primary" class="mr-2" [disabled]="!editForm.valid">{{editing ? "Save" : "Create"}}</button>
   <button type="reset" mat-stroked-button color="primary" routerLink="/admin/products">Cancel</button>
 </form>

@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'cart', component: DetailsComponent, canActivate: [StoreGuard] },
   { path: 'product/:id', component: ProductDetailsComponent, canActivate: [StoreGuard], resolve: { product: ProductDetailResolverService} },
   { path: 'checkout', component: CheckoutComponent, canActivate: [StoreGuard] },
-  { path: 'admin', loadChildren: 'src/app/admin/admin.module#AdminModule', canActivate: [StoreGuard], canLoad: [AuthGuard] },
+  { path: 'admin', loadChildren: 'src/app/admin/admin.module#AdminModule', canLoad: [AuthGuard] },
+  { path: '',   redirectTo: '/store', pathMatch: 'full' },
   { path: '**', redirectTo: '/store' }
 ];
 

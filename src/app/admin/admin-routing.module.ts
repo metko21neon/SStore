@@ -8,14 +8,17 @@ import { EditComponent } from './edit/edit.component';
 import { OrdersComponent } from './orders/orders.component';
 
 import { AuthGuard } from './auth.guard';
+import {CanDeactivateGuard} from './can-deactivate.guard';
+import {OrderDetailsComponent} from './order-details/order-details.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'products/:mode/:id', component: EditComponent },
-      { path: 'products/:mode', component: EditComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'orders', component: OrdersComponent },
+      { path: '', component: ProductsComponent, outlet: 'primary' },
+      { path: '', component: OrdersComponent, outlet: 'order' },
+      { path: 'products/:mode', component: EditComponent, canDeactivate: [CanDeactivateGuard], outlet: 'primary' },
+      { path: 'products/:mode/:id', component: EditComponent, canDeactivate: [CanDeactivateGuard] },
+      { path: 'order/:id', component: OrderDetailsComponent, outlet: 'order' },
       { path: '**', redirectTo: 'products' }
     ]},
   { path: '**', redirectTo: 'auth' }
