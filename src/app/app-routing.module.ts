@@ -10,7 +10,7 @@ import {AuthGuard} from './admin/auth.guard';
 import {ProductDetailResolverService} from './model/core/product-detail-resolver.service';
 import {AuthComponent} from './admin/auth/auth.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'login', component: AuthComponent },
   { path: 'store', component: StoreComponent, canActivate: [StoreGuard] },
   { path: 'cart', component: DetailsComponent, canActivate: [StoreGuard] },

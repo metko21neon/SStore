@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../product.model';
 import { Order } from '../order.model';
 import { Observable } from 'rxjs';
@@ -41,7 +41,7 @@ export class RestDatasourceService {
   saveProduct(product: Product): Observable<Product> {
     return this.http.post(this.baseUrl + 'products', product);
   }
-  updateProduct(product): Observable<Product> {
+  updateProduct(product: Product): Observable<Product> {
     return this.http.put(this.baseUrl + `products/${product.id}`, product);
   }
   deleteProduct(id: number): Observable<Product> {
