@@ -10,13 +10,19 @@ import { OrdersComponent } from './orders/orders.component';
 import {MaterialModule} from '../material';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {reducers, effects} from '../model/store';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('prod', reducers),
+    EffectsModule.forFeature(effects),
   ],
   declarations: [
     AdminComponent,

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../product.model';
+
+import {Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+
 import { Order } from '../order.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {IProduct, Product} from '../product.model';
 
 const PROTOCOL = 'http';
 const PORT = 3500;
@@ -32,31 +34,58 @@ export class RestDatasourceService {
   getToken(): string {
     return this.auth_token;
   }
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl + 'products');
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(this.baseUrl + 'products')
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>('https://restcountries.eu/rest/v2/all');
+    return this.http.get<Country[]>('https://restcountries.eu/rest/v2/all')
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   saveProduct(product: Product): Observable<Product> {
-    return this.http.post(this.baseUrl + 'products', product);
+    return this.http.post(this.baseUrl + 'products', product)
+    .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   updateProduct(product: Product): Observable<Product> {
-    return this.http.put(this.baseUrl + `products/${product.id}`, product);
+    return this.http.put(this.baseUrl + `products/${product.id}`, product)
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   deleteProduct(id: number): Observable<Product> {
-    return this.http.delete(this.baseUrl + `products/${id}`);
+    return this.http.delete(this.baseUrl + `products/${id}`)
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.baseUrl + 'orders');
+    return this.http.get<Order[]>(this.baseUrl + 'orders')
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   deleteOrder(id: number): Observable<Order> {
-    return this.http.delete<Order>(this.baseUrl + `orders/${id}`);
+    return this.http.delete<Order>(this.baseUrl + `orders/${id}`)
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   updateOrder(order: Order): Observable<Order> {
-    return this.http.put<Order>(this.baseUrl + `orders/${order.id}`, order);
+    return this.http.put<Order>(this.baseUrl + `orders/${order.id}`, order)
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
   saveOrder(order: Order): Observable < Order > {
-    return this.http.post<Order>(this.baseUrl + 'orders', order);
+    return this.http.post<Order>(this.baseUrl + 'orders', order)
+      .pipe(catchError((error: any) => {
+        return throwError(error);
+      }));
   }
 }

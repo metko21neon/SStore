@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import { Product } from '../../model/product.model';
+import {IProduct, Product} from '../../model/product.model';
 import { ProductRepositoryService } from '../../model/core/product-repository.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Observable} from 'rxjs';
 import {DialogService} from '../../model/core/dialog.service';
+import {Observable} from 'rxjs';
+
+import {Store} from '@ngrx/store';
+import * as fromStore from '../../model/store';
 
 @Component({
   selector: 'app-edit',
@@ -12,14 +15,16 @@ import {DialogService} from '../../model/core/dialog.service';
   styleUrls: ['./edit.component.sass']
 })
 export class EditComponent implements OnInit {
-  editing = false;
-  product: Product = new Product();
+  public editing = false;
+  public product: Product = new Product();
   public editForm: FormGroup;
+  public products$: Observable<any>;
   constructor(private repository: ProductRepositoryService,
               private router: Router,
               private formBuilder: FormBuilder,
               private dialogService: DialogService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private store: Store<fromStore.State>) {
     this.editing = activatedRoute.snapshot.params['mode'] === 'edit';
     if (this.editing) {
       Object.assign(this.product, repository.getProductById(activatedRoute.snapshot.params['id']));
@@ -34,13 +39,15 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.products$ = this.store.select(fromStore.selectProducts);
+    console.log(this.products$);
+    this.store.dispatch(new fromStore.LoadProducts());
   }
   get categories(): string[] {
     return this.repository.getCategories();
   }
   public save(form) {
-    this.product = form.value;
-    this.repository.saveProduct(this.product);
+    this.repository.saveProduct(form.value);
     this.router.navigateByUrl('/admin');
   }
   canDeactivate(): Observable<boolean> | boolean {

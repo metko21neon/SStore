@@ -37,4 +37,4 @@ import { CounterDirective } from './counter.directive';
     CheckoutComponent
   ]
 })
-export class StoreModule { }
+export class SStoreModule { }

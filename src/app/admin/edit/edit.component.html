@@ -1,3 +1,7 @@
+<!--<div *ngFor="let product of products$ | async">
+  <h1>{{product.name}}</h1>
+</div>-->
+
 <form novalidate [formGroup]="editForm" (ngSubmit)="save(editForm)" class="w-75 m-auto text-center">
   <mat-form-field class="w-100">
     <input matInput #name formControlName="name" placeholder="Enter your name" required>
