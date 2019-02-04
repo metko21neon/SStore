@@ -20,7 +20,7 @@ import { CounterDirective } from './counter.directive';
     ModelModule,
     RouterModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     StoreComponent,
@@ -37,4 +37,4 @@ import { CounterDirective } from './counter.directive';
     CheckoutComponent
   ]
 })
-export class SStoreModule { }
+export class StorageModule { }

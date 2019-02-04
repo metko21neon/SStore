@@ -41,9 +41,3 @@ module.exports = function () {
     orders: []
   }
 };
-
-{
-  products: {
-
-  }
-};

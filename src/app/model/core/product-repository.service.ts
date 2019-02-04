@@ -13,6 +13,7 @@ export class ProductRepositoryService {
   constructor(private dataSource: RestDatasourceService) {
     dataSource.getProducts().subscribe(data => {
       this.products = data;
+      console.log(data);
       this.categories = data.map( product => product.category)
         .filter((c, index, array) => array.indexOf(c) === index).sort();
     });

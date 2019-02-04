@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../model/core/auth.service';
+import {Store} from '@ngrx/store';
+import * as fromStore from '../../store/reducers';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +11,8 @@ import { AuthService } from '../../model/core/auth.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private auth: AuthService,
+  constructor(private store: Store<fromStore.State>,
+              private auth: AuthService,
               private router: Router) { }
 
   ngOnInit() {}

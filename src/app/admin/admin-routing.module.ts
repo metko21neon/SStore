@@ -12,7 +12,9 @@ import {CanDeactivateGuard} from './can-deactivate.guard';
 import {OrderDetailsComponent} from './order-details/order-details.component';
 
 const routes: Routes = [
-  { path: '', component: AdminComponent, canActivate: [AuthGuard],
+  { path: '',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: ProductsComponent, outlet: 'primary' },
       { path: '', component: OrdersComponent, outlet: 'order' },

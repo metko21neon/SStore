@@ -1,18 +1,20 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import {of} from 'rxjs';
-import {Effect, Actions} from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import {catchError, map, switchMap} from 'rxjs/operators';
 
-import * as productActions from '../actions/product.action';
-import {RestDatasourceService} from '../../core/rest-datasourse.service';
+import * as productActions from '../../store/actions';
+import {RestDatasourceService} from '../../model/core/rest-datasourse.service';
+
 
 @Injectable()
-export class ProductEffect {
+export class ProductEffects {
+
   constructor(private actions$: Actions,
               private dataSource: RestDatasourceService) {}
   @Effect()
-  loadProducts$ = this.actions$.ofType(productActions.ProductsActionTypes.LOAD_PRODUCTS)
+  loadProducts$ = this.actions$.ofType(productActions.ProductActionTypes.LOAD_PRODUCTS)
     .pipe(switchMap(() => {
       return this.dataSource.getProducts().pipe(
         map(products => new productActions.LoadProductsSuccess(products)),

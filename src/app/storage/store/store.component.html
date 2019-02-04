@@ -30,10 +30,17 @@
         <button class="float-right" mat-stroked-button color="primary"
                 (click)="addProductToCart(element)">
           Add To Cart
-        </button> </td>
+        </button>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[10, 15, 20, 25]"></mat-paginator>
 </div>
+
+<div *ngFor="let course of products$ | async">
+  <h1>{{course.id}}</h1>
+  <h1>{{course.name}}</h1>
+</div>
+<h1>{{products$ |async}}</h1>
